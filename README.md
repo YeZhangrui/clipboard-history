@@ -1,7 +1,10 @@
 # 剪贴板历史 — 项目总指南
 
 > Windows 11 桌面剪贴板历史软件（文字 + 图片），逐步开发中。
-> 定位：**双击即用的单个 exe 免安装软件**，淡蓝色简洁界面。
+> 定位：**双击即用的单个 exe 免安装软件**，淡蓝色简洁界面（Kazumi 风格深浅双主题）。
+
+**GitHub 仓库**：https://github.com/YeZhangrui/clipboard-history
+**最新版下载（Releases）**：https://github.com/YeZhangrui/clipboard-history/releases/latest
 
 ## 一、标准文件路径索引
 
