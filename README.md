@@ -1,67 +1,117 @@
-# 剪贴板历史 — 项目总指南
+# 📋 Clipboard History · 剪贴板历史
 
-> Windows 11 桌面剪贴板历史软件（文字 + 图片），逐步开发中。
-> 定位：**双击即用的单个 exe 免安装软件**，淡蓝色简洁界面（Kazumi 风格深浅双主题）。
+> Windows 11 剪贴板历史软件 —— 自动记录你复制的**文字与图片**，一键再次使用。
+> 免安装单文件 exe，数据仅保存在本机，绝不上传。
 
-**GitHub 仓库**：https://github.com/YeZhangrui/clipboard-history
-**最新版下载（Releases）**：https://github.com/YeZhangrui/clipboard-history/releases/latest
+<p align="center">
+  <img src="https://img.shields.io/badge/系统-Windows%2011-0F0F0F?style=for-the-badge&logo=windows&logoColor=white" alt="Windows 11" />
+  <img src="https://img.shields.io/badge/界面-PySide6%20%28Qt6%29-3E6FA5?style=for-the-badge&logo=qt&logoColor=white" alt="PySide6" />
+  <img src="https://img.shields.io/badge/语言-Python%203.11%2B-5CA3E8?style=for-the-badge&logo=python&logoColor=white" alt="Python" />
+  <img src="https://img.shields.io/github/v/release/YeZhangrui/clipboard-history?style=for-the-badge&label=Release&color=35618E" alt="Release" />
+</p>
 
-## 一、标准文件路径索引
+## ✨ 功能特性
 
-所有开发标准文件在 `docs/` 目录，**每次开发前必读对应文件**：
-
-| 文件 | 内容 | 何时读 |
-|---|---|---|
-| [docs/requirements.md](docs/requirements.md) | 需求规格说明书：功能/非功能需求、验收标准 | 开发前对齐范围 |
-| [docs/technology.md](docs/technology.md) | 技术方案：选型、架构、数据库设计、关键实现 | 写代码前 |
-| [docs/design.md](docs/design.md) | UI/UX 设计规范：色彩、布局、组件、交互 | 做界面时 |
-| [docs/development-plan.md](docs/development-plan.md) | 开发执行计划：阶段 0~6、每阶段 SOP、质量门禁 | 每个阶段开工前 |
-| [docs/devlog-convention.md](docs/devlog-convention.md) | 开发日志书写规范：格式、更新规则 | 写日志时 |
-
-其他目录：
-
-| 路径 | 内容 |
+| 分类 | 功能 |
 |---|---|
-| `devlogs/` | 开发日志（每日一个文件，索引见 `devlogs/README.md`） |
-| `src/` | 源代码（阶段 1 起创建） |
-| `data/` | 运行时数据：数据库、图片、配置（随 exe 自动生成） |
+| 📥 自动记录 | 后台实时监听剪贴板，文字 / 图片自动入库（同内容自动去重合并，不刷屏） |
+| 🔍 检索 | 关键词搜索 + **类型筛选**（全部 / 文本 / 图片），可组合使用 |
+| ⏳ 存储期限 | 1 / 3 / 5 天可选，到期自动清理；**置顶内容永不过期** |
+| 📑 卡片浏览 | 时间降序 + 置顶分组；长文本**一键展开全文**；图片**查看大图预览** |
+| 🌗 主题 | **浅色 / 深色 / 跟随系统**三种模式，运行中热切换（Kazumi 风格设计系统） |
+| 🫧 桌面悬浮面板 | 常驻置顶小面板，点击卡片即复制；大小可调、位置记忆 |
+| ⌨️ 双全局快捷键 | `Ctrl+Shift+V` 主界面唤出/最小化；`Ctrl+Shift+F` 悬浮面板显示/隐藏 |
+| 🎛 后台化 | 系统托盘常驻、关闭隐藏、开机自启、单实例、复制历史内容不重复记录 |
 
-## 二、工作说明（协作方式）
+## 📸 界面预览
 
-**你不需要懂代码。** 整个开发由我（AI）按以下方式推进：
+**深色主题（Kazumi 风格）**
 
-1. **按阶段推进**：遵循 `docs/development-plan.md` 的阶段 0→6 顺序，
-   每个阶段只做该阶段任务，小步快跑、完成即汇报。
-2. **每阶段结束做三件事**：
-   - 更新当日日志（`devlogs/YYYY-MM-DD.md`：完成事项 + 待办事项），自动执行，你无需动手；
-   - 告诉你"做了什么、怎么验证、下一步是什么"；
-   - **等你确认后**才进入下一阶段（你说"继续"即可）。
-3. **你随时可以提出修改**：新想法/改需求 → 我记录到当日日志，需要时先更新 `docs/requirements.md` 再动手。
-4. **交付物**：最终你只拿一个 `.exe`，双击即用；任何阶段你都可以先试用中间版本。
+![主界面-深色](docs/screenshots/main-dark.png)
 
-## 三、当前进度 —— 🎉 v1.0 全部完成（2026-09-07）
+**浅色主题**
 
-- 阶段 0 项目初始化：✅ 完成
-- 阶段 1 核心监听：✅ 完成（用户已确认）
-- 阶段 2 数据层完善：✅ 完成（用户已确认）
-- 阶段 3 UI 主界面：✅ 完成（用户已确认）
-- 阶段 4 集成与后台化：✅ 完成（用户已确认）
-- 阶段 5 打包与验收：✅ 完成（exe 真机验证通过）
-- 阶段 6 交付：✅ 完成（`交付_剪贴板历史_v1.0/` 已就绪）
-- v1.1 候选：大图预览、自定义天数、图片压缩、深色模式、快捷键唤出、收藏分类、批量导出（待用户反馈定级）
+![主界面-浅色](docs/screenshots/main-light.png)
 
-## 四、正式版 exe（已交付）
+**桌面悬浮面板**
 
-**交付文件夹：`交付_剪贴板历史_v1.0/`**，内含：
+![悬浮面板](docs/screenshots/float-panel-dark.png)
 
-| 文件 | 说明 |
+## 🚀 快速开始（下载即用）
+
+1. 前往 **Releases** 下载 `ClipboardHistory.exe`：<https://github.com/YeZhangrui/clipboard-history/releases/latest>
+2. 把 exe 放到任意**有写权限**的目录（桌面、D 盘等；不要放 `C:\Program Files`）
+3. **双击 exe** → 淡蓝/深色窗口出现，之后复制任何内容都会被自动记录；
+   点击卡片内容即可放回剪贴板，到目标窗口 `Ctrl+V` 粘贴
+
+> 📌 数据保存在 **exe 同目录的 `data/` 文件夹**中（记录库 + 图片），本地存储、不联网不上传。
+
+### 常用操作
+
+- 点卡片 **☆** 置顶（金色，永不过期）｜**✕** 删除
+- 顶栏「**类型: 全部**」按文本/图片筛选；搜索框输入关键词实时过滤
+- 长文本卡片底部「**展开全文 ▾**」；图片卡片「**查看大图**」
+- 关闭窗口 = 藏到托盘继续记录；托盘右键：开机自启 / 悬浮面板 / 退出
+- 任意软件里按 `Ctrl+Shift+V` 唤出主界面，`Ctrl+Shift+F` 开关悬浮面板
+
+## 🛠 从源码运行（开发者）
+
+```bash
+# 环境：Windows 11 + Python 3.11+
+pip install PySide6
+python src/main.py          # 启动主界面（+ 后台监听）
+python src/main.py --self-test   # 运行自动化自测
+```
+
+## 📦 打包为单文件 exe
+
+```bash
+python 打包脚本\gen_icon.py        # 生成图标
+python -m PyInstaller --noconfirm --clean --onefile --windowed \
+  --name ClipboardHistory --icon icon.ico \
+  --exclude-module PySide6.QtQml --exclude-module PySide6.QtQuick \
+  --exclude-module PySide6.QtWebEngineCore src\main.py
+```
+
+或直接双击 `打包脚本\build.bat`，产物在 `dist\ClipboardHistory.exe`。
+
+## 📁 项目结构
+
+```
+├── src/                    # 源代码
+  ├── main.py              # 入口（单实例 / 监听 / 托盘 / 热键组装）
+  ├── clipboard_watcher.py # 剪贴板监听（文本/图片、去重、抑制自身）
+  ├── database.py          # SQLite 数据层（类型检索 / 清理 / 置顶）
+  ├── theme.py             # 主题管理（浅色/深色/跟随系统）
+  ├── hotkey.py            # 全局热键（注册 + 消息路由）
+  ├── tray.py / autostart.py / config.py / image_store.py
+  └── ui/                  # 主窗口 / 卡片 / 悬浮面板 / 设置 / 样式
+docs/                      # 需求、技术、设计、开发计划、日志规范
+devlogs/                   # 开发日志（v1.0 → v1.20 全程记录）
+打包脚本/                   # build.bat + 图标生成
+test_ui.py                 # 界面冒烟测试
+```
+
+## 📖 文档
+
+| 文档 | 说明 |
 |---|---|
-| `ClipboardHistory.exe` | 软件本体（约 47MB，双击即用，免安装，v1.7：Kazumi 风格双主题 + 桌面悬浮面板） |
-| `使用说明.txt` | 小白友好说明书（安装/使用/设置/悬浮面板/常见问题） |
+| [docs/requirements.md](docs/requirements.md) | 需求规格说明书（含验收标准） |
+| [docs/technology.md](docs/technology.md) | 技术方案（架构 / 数据设计 / 实现要点） |
+| [docs/design.md](docs/design.md) | UI/UX 设计规范（Kazumi 风格双主题） |
+| [docs/development-plan.md](docs/development-plan.md) | 开发计划与质量门禁 |
 
-**用法**：把整个文件夹放到桌面或任意有写权限的位置 → 双击 exe → 复制任意内容即自动记录 →
-点击卡片再次复制使用。数据存在 exe 同目录的 `data/` 文件夹，绝不上传任何内容。
+## 🔒 数据与隐私
 
-**验收清单**（`docs/requirements.md` 第 4 节）：文字/图片记录、点击再粘贴、按天清理、
-置顶永不过期、搜索、开机自启 + 托盘常驻 —— 交付前已全部自动化验证 + exe 真机验证。
-更多细节见 [docs/requirements.md](docs/requirements.md) 与 [docs/technology.md](docs/technology.md)。
+- 所有记录仅存于本机 `data/` 目录，**软件不联网、不上传**
+- 开源仓库不包含用户数据（`data/` 已在 `.gitignore` 中排除）
+
+## 📄 License
+
+本项目目前**未指定开源许可证**。如需再分发、商用或协作，请联系作者获取授权。
+
+---
+
+<p align="center">
+  <sub>用 ❤️ 为 Windows 11 打造 ｜ 反馈问题请到 <a href="https://github.com/YeZhangrui/clipboard-history/issues">Issues</a></sub>
+</p>
