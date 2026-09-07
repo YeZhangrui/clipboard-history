@@ -1,0 +1,17 @@
+# 运行时数据（个人剪贴板记录，绝不外传）
+data/
+
+# 构建产物
+dist/
+build/
+*.spec
+__pycache__/
+*.pyc
+
+# 本地交付文件夹（exe 通过 GitHub Releases 发布）
+交付_剪贴板历史_v1.0/
+
+# 临时/系统
+.DS_Store
+Thumbs.db
+*.log
