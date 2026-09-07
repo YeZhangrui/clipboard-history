@@ -25,7 +25,7 @@
 
 ## 📸 界面预览
 
-**深色主题（Kazumi 风格）**
+**深色主题**
 
 ![主界面-深色](docs/screenshots/main-dark.png)
 
